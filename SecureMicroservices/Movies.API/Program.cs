@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Movies.API.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<MoviesAPIContext>(options =>
     options.UseInMemoryDatabase(("Movies")));
@@ -13,6 +13,17 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+SeedDatabase(app);
+
+void SeedDatabase(WebApplication app)
+{
+    using(var scope = app.Services.CreateScope())
+    {
+        var services = scope.ServiceProvider;
+        var movieContext = services.GetRequiredService<MoviesAPIContext>();
+        MoviesContextSeed.SeedAsync(movieContext);
+    }
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
