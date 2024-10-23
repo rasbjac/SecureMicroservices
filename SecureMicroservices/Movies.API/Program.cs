@@ -12,6 +12,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddAuthentication("Bearer")
+    .AddJwtBearer("Bearer", option => 
+    {
+        option.Authority = "https://localhost:5005";
+        option.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters() 
+        {
+            ValidateAudience = false
+        };
+    });
+
 var app = builder.Build();
 SeedDatabase(app);
 
@@ -33,6 +43,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseRouting();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
