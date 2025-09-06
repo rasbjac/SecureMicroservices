@@ -1,19 +1,17 @@
 {
   "profiles": {
-    "Movies.API": {
+    "IdentityServer": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:5001"
+      "applicationUrl": "https://localhost:5005"
     },
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -24,8 +22,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:35894",
-      "sslPort": 44322
+      "applicationUrl": "http://localhost:4336",
+      "sslPort": 44306
     }
   }
 }
