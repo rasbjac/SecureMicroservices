@@ -1,7 +1,8 @@
+﻿using Movies.Client.ApiServices;
 var builder = WebApplication.CreateBuilder(args);
-
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddTransient<IMovieApiService, MovieApiService>();
 
 var app = builder.Build();
 
